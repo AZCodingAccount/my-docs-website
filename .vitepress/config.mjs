@@ -8,7 +8,7 @@ import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base:'/AZDocs/',
+  base:'/my-docs-website/',
   // srcDir: "./docs", // 配置md文档的映射目录，默认根路径
   title: "AlbertZhang的文档网站",
   description: "A bugDesigner Site",
