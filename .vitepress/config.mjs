@@ -8,8 +8,9 @@ import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base:'/my-docs-website/',
+  // base:'/my-docs-website/',
   // srcDir: "./docs", // 配置md文档的映射目录，默认根路径
+  head: [["link", { rel: "icon", href: "/logo.svg" }]],
   title: "AlbertZhang的文档网站",
   description: "A bugDesigner Site",
   themeConfig: {
@@ -49,8 +50,8 @@ export default defineConfig({
       },
       {
         text: "其他文档",
-        items: [{ text: "Docker", link: "/docs/tools/docker" },],
-        items: [{ text: "GitHubPages部署", link: "/docs/tools/githubpages" },],
+        items: [{ text: "Docker", link: "/docs/tools/docker" }],
+        items: [{ text: "GitHubPages部署", link: "/docs/tools/githubpages" }],
       },
     ],
     // 侧边栏配置，这个函数自动生成侧边栏

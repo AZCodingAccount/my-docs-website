@@ -104,6 +104,8 @@ pnpm run docs:dev
 
 ![image-20240108194335668](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108194335668.png)
 
+### 主页扩展
+
 我们可能还想要对页面进行进一步美化，添加一些图标。可以去这个网站找图片https://www.iconfont.cn/
 
 将找到的图片放在根目录下的public目录下。
@@ -114,7 +116,7 @@ pnpm run docs:dev
 
 ![image-20240108195220278](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108195220278.png)
 
-TODO：
+**TODO：**
 
 - logo的配置是在config.mjs添加。（注意是themeConfig不是config）
 
@@ -125,6 +127,10 @@ logo: "logo.svg", // 配置logo位置，public目录
 - vitepress原生支持国外的sociallink，如果是国内需要自行复制svg代码。如图：
 
 ![image-20240108195501321](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108195501321.png)
+
+- 添加搜索栏，config.mjs中的themeConfig（支持国际化需要进一步配置 ）
+
+![image-20240108215134634](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108215134634.png)
 
 ### 美化文章页
 
@@ -365,6 +371,81 @@ git push -u origin master
 
 10. 重命名并设置deploy脚本
 
+脚本文件：参考的vitepress官方文档：https://vitepress.dev/guide/deploy#github-pages
+
+❗node版本和pnpm版本需要一致
+
+❗对于npm的部署可以参考这个博客[GitHub Action一键部署个人博客 | Ahao (helloahao096.github.io)](https://helloahao096.github.io/helloahao/posts/GitHub Action一键部署个人博客.html)
+
+❗需要注意项目的根目录（.vitepress所在的目录）
+
+```yml
+name: Deploy VitePress site to Pages
+
+on:
+  push:
+    branches: [master]
+
+# 设置tokenn访问权限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 只允许同时进行一次部署，跳过正在运行和最新队列之间的运行队列
+# 但是，不要取消正在进行的运行，因为我们希望允许这些生产部署完成
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # 构建工作
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2 # 安装pnpm并添加到环境变量
+        with:
+          version: 8.6.12 # 指定需要的 pnpm 版本
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm # 设置缓存
+      - name: Setup Pages
+        uses: actions/configure-pages@v3  # 在工作流程自动配置GithubPages
+      - name: Install dependencies
+        run: pnpm install # 安装依赖
+      - name: Build with VitePress
+        run: |
+          pnpm run docs:build # 启动项目
+          touch .nojekyll  # 通知githubpages不要使用Jekyll处理这个站点，不知道为啥不生效，就手动搞了
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2  # 上传构建产物
+        with:
+          path: .vitepress/dist # 指定上传的路径，当前是根目录，如果是docs需要加docs/的前缀
+
+  # 部署工作
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }} # 从后续的输出中获取部署后的页面URL
+    needs: build    # 在build后面完成
+    runs-on: ubuntu-latest  # 运行在最新版本的ubuntu系统上
+    name: Deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment  # 指定id
+        uses: actions/deploy-pages@v2 # 将之前的构建产物部署到github pages中
+
+```
+
+
+
 ![image-20240108210850443](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108210850443.png)
 
 11. 点击确定，耐心等待15秒左右，就可以了，接下来查看我们的域名：
@@ -373,6 +454,10 @@ git push -u origin master
 
 
 
-踩坑点：为啥下面的没有CSS样式呢？原因是因为
+踩坑点：为啥下面的没有CSS样式呢？原因是因为没有.nojekyll这个文件，不然一些css会被忽略。添加一下再push就好了
 
 ![image-20240108211022770](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108211022770.png)
+
+最后，就部署完毕了
+
+![image-20240108214941003](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108214941003.png)
