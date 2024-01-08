@@ -28,7 +28,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2 # 安装pnpm并添加到环境变量
         with:
-          version: 8.6.12 # 指定需要的 pnpm 版本
+          version: 8.6.12 # 指定 pnpm 版本
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
