@@ -50,12 +50,20 @@ export default defineConfig({
       },
       {
         text: "数学建模",
-        link:"/docs/math-model/",
+        items: [
+          { text: "数据分析三剑客", link: "/docs/math-model/data-ana" },
+          { text: "评价类模型", link: "/docs/math-model/eval" },
+          { text: "预测类模型", link: "/docs/math-model/forecast" },
+          { text: "优化类模型", link: "/docs/math-model/optimize" },
+          { text: "分类模型", link: "/docs/math-model/classify" },
+        ],
       },
       {
         text: "其他文档",
         items: [{ text: "Docker", link: "/docs/tools/docker" }],
-        items: [{ text: "VitePress搭建并部署", link: "/docs/tools/githubpages" }],
+        items: [
+          { text: "VitePress搭建并部署", link: "/docs/tools/githubpages" },
+        ],
       },
     ],
     // 侧边栏配置，这个函数自动生成侧边栏
