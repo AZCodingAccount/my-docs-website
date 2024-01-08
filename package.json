@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "vitepress": "1.0.0-rc.35"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "dependencies": {
+    "@mdit-vue/plugin-toc": "^2.0.0",
+    "markdown-it": "^14.0.0",
+    "markdown-it-anchor": "^8.6.7"
+  }
+}
