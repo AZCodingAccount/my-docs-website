@@ -1,26 +1,19 @@
-name: Deploy
-
-on:
-  push:
-    branches:
-      - master
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '18' # 确保这里是你想要的版本
           cache: 'pnpm'
 
       - name: Install pnpm
-        run: npm install -g pnpm
+        run: |
+          npm install -g pnpm
+          echo "$(pnpm env --global-bin)" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
