@@ -49,9 +49,13 @@ export default defineConfig({
         ],
       },
       {
+        text: "数学建模",
+        link:"/docs/math-model/",
+      },
+      {
         text: "其他文档",
         items: [{ text: "Docker", link: "/docs/tools/docker" }],
-        items: [{ text: "GitHubPages部署", link: "/docs/tools/githubpages" }],
+        items: [{ text: "VitePress搭建并部署", link: "/docs/tools/githubpages" }],
       },
     ],
     // 侧边栏配置，这个函数自动生成侧边栏
