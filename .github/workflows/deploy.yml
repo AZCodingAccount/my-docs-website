@@ -1,37 +1,37 @@
 name: Deploy
 
 on:
-   push:
-      branches:
-         - master
+  push:
+    branches:
+      - master
 
 jobs:
-   deploy:
-      runs-on: ubuntu-latest
-      steps:
-         - uses: actions/checkout@v3
-           with:
-              fetch-depth: 0
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-         - name: Set up Node.js
-           uses: actions/setup-node@v3
-           with:
-              node-version: 16
-              cache: 'pnpm'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'pnpm'
 
-         - name: Install pnpm
-           run: npm install -g pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
 
-         - name: Install dependencies
-           run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-         - name: Build
-           run: pnpm run docs:build
+      - name: Build
+        run: pnpm run docs:build
 
-         - name: Deploy
-           uses: peaceiris/actions-gh-pages@v3
-           with:
-              github_token: ${{ secrets.GITHUB_TOKEN }}
-              publish_dir: ./.vitepress/dist
-              publish_branch: gh-pages
-              full_commit_message: ${{ github.event.head_commit.message }}
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./.vitepress/dist
+          publish_branch: gh-pages
+          full_commit_message: ${{ github.event.head_commit.message }}
