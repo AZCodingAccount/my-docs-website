@@ -59,10 +59,11 @@ export default defineConfig({
         ],
       },
       {
-        text: "其他文档",
-        items: [{ text: "Docker", link: "/docs/tools/docker" }],
+        text: "其他",
         items: [
-          { text: "VitePress搭建并部署", link: "/docs/tools/githubpages" },
+          { text: "Git", link: "/docs/tools/git" },
+          { text: "Docker", link: "/docs/tools/docker" },
+          { text: "VitePress搭建和部署", link: "/docs/tools/githubpages" },
         ],
       },
     ],

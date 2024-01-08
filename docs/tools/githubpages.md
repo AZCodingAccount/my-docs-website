@@ -312,6 +312,8 @@ aside: "left", // 设置右侧侧边栏在左侧显示
 
 ## 使用Github Pages部署
 
+### 部署步骤
+
 Github Pages专门用来托管静态内容，由于不需要服务器且基于git，支持CI/CD，成为很多静态网站比如博客、文档网站的很好的选择。下面介绍流程
 
 1. 在github上创建仓库，如果没有Github账号，需要先注册一个。
@@ -461,3 +463,11 @@ jobs:
 最后，就部署完毕了
 
 ![image-20240108214941003](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108214941003.png)
+
+### 配置自定义域名
+
+来自我的最佳实践，直接配置子域名，别配置4条A记录，没必要，并且域名服务商只允许添加5条，多了就得加钱了。
+
+在自己的域名服务商那里添加一条CNAME记录，直接指向自己的github分配的域名就好了，另外需要把这个base给注释掉（不然css文件和页面都找不到），等待分配完成。
+
+![image-20240108232734898](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108232734898.png)
