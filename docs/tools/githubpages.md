@@ -318,7 +318,7 @@ aside: "left", // 设置右侧侧边栏在左侧显示
 
 ![image-20240108204620601](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108204620601.png)
 
-### 美化icon
+### 美化地址栏icon
 
 我们可能还需要修改浏览器地址栏的左边图标
 
@@ -329,6 +329,35 @@ aside: "left", // 设置右侧侧边栏在左侧显示
 ```js
 head: [["link", { rel: "icon", href: "/logo.svg" }]],
 ```
+
+### 设置搜索框
+
+在`config.mjs defineConfig`下面直接配置即可
+
+```python
+   // 设置搜索框的样式
+    search: {
+      provider: "local",
+      options: {
+        translations: {
+          button: {
+            buttonText: "搜索文档",
+            buttonAriaLabel: "搜索文档",
+          },
+          modal: {
+            noResultsText: "无法找到相关结果",
+            resetButtonTitle: "清除查询条件",
+            footer: {
+              selectText: "选择",
+              navigateText: "切换",
+            },
+          },
+        },
+      },
+    },
+```
+
+
 
 ## 使用Github Pages部署
 
