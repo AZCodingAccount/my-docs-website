@@ -86,7 +86,7 @@ pnpm run docs:dev
 
 ![image-20240110033048297](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240110033048297.png)
 
-9这个是直接配置footer，在`config.mjs defineConfig`下面配置就可以了
+9这个是直接配置footer，在`config.mjs defineConfig themeConfig`下面配置就可以了
 
 ![image-20240110033147092](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240110033147092.png)
 
@@ -317,6 +317,18 @@ aside: "left", // 设置右侧侧边栏在左侧显示
 
 
 ![image-20240108204620601](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108204620601.png)
+
+### 美化icon
+
+我们可能还需要修改浏览器地址栏的左边图标
+
+![image-20240110161809355](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240110161809355.png)
+
+在`config.mjs defineConfig`下面直接配置即可
+
+```js
+head: [["link", { rel: "icon", href: "/logo.svg" }]],
+```
 
 ## 使用Github Pages部署
 
