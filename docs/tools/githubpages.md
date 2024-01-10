@@ -330,9 +330,11 @@ aside: "left", // 设置右侧侧边栏在左侧显示
 head: [["link", { rel: "icon", href: "/logo.svg" }]],
 ```
 
+❗如果需要配置路径`base`，这个`href`也需要添加base路径作为前缀
+
 ### 设置搜索框
 
-在`config.mjs defineConfig`下面直接配置即可
+在`config.mjs defineConfig themeConfig`下面直接配置即可
 
 ```python
    // 设置搜索框的样式
@@ -368,6 +370,12 @@ Github Pages专门用来托管静态内容，由于不需要服务器且基于gi
 1. 在github上创建仓库，如果没有Github账号，需要先注册一个。
 
 ![](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108205813594.png)
+
+需要在config.mjs里面配置base，名称为github仓库名称，注意不要忘记改之前的icon
+
+```js
+base: "/docs-demo/"	
+```
 
 2. 初始化git仓库
 
