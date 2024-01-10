@@ -82,6 +82,14 @@ pnpm run docs:dev
 
 ![image-20240108191730006](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108191730006.png)
 
+忘记了还有个页脚：
+
+![image-20240110033048297](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240110033048297.png)
+
+9这个是直接配置footer，在`config.mjs defineConfig`下面配置就可以了
+
+![image-20240110033147092](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240110033147092.png)
+
 2-6是在index.md文件中自定义的。简单介绍一下对应关系
 
 `name<==>2`		`text<==>3`		`tagline<==>4`		`actions<==>5`		`features<==>6`
@@ -466,7 +474,7 @@ jobs:
 
 ### 配置自定义域名
 
-来自我的最佳实践，直接配置子域名，别配置4条A记录，没必要，并且域名服务商只允许添加5条，多了就得加钱了。
+来自我的最佳实践，直接配置子域名，别配置4条A记录，没必要让所有都指向这个，一个域名能配置好几个网站。另外域名服务商只允许添加5条记录，多了就得加钱了。
 
 在自己的域名服务商那里添加一条CNAME记录，直接指向自己的github分配的域名就好了，另外需要把这个base给注释掉（不然css文件和页面都找不到），等待分配完成。
 
