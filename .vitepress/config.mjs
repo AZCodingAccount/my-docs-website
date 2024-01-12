@@ -63,7 +63,8 @@ export default defineConfig({
         items: [
           { text: "Git", link: "/docs/tools/git" },
           { text: "Docker", link: "/docs/tools/docker" },
-          { text: "VitePress搭建和部署", link: "/docs/tools/githubpages" },
+          { text: "VitePress搭建和部署", link: "/docs/tools/vitepress" },
+          { text: "常用图标", link: "/docs/tools/icons" },
         ],
       },
     ],
