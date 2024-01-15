@@ -1,7 +1,5 @@
 # 逆向B站刷播放量
 
-fcd7d74de3a58d23db807c4fa186718c
-
 ## 找到刷播放量的请求URL
 
 -.js -.css -.png -.svg -.html -data -Ha 首先在过滤器里面把静态资源相关的先过滤了
