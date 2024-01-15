@@ -59,6 +59,13 @@ export default defineConfig({
         ],
       },
       {
+        text: "爬虫案例",
+        items: [
+          { text: "某练通爬取", link: "/docs/spiders/dlt" },
+          { text: "中考移民问题", link: "/docs/spiders/middle_exam" }
+        ],
+      },
+      {
         text: "其他",
         items: [
           { text: "Git", link: "/docs/tools/git" },
