@@ -61,6 +61,7 @@ export default defineConfig({
       {
         text: "爬虫案例",
         items: [
+          { text: "B站刷播放量接口", link: "/docs/spiders/Bilibili" },
           { text: "某练通爬取", link: "/docs/spiders/dlt" },
           { text: "中考移民问题", link: "/docs/spiders/middle_exam" }
         ],
