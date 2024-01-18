@@ -28,6 +28,7 @@ export default defineConfig({
       {
         text: "后端",
         items: [
+          {text:"SpringBoot集成各种技术",link:"/docs/back-end/integrate-tech"},
           { text: "RabbitMQ", link: "/docs/back-end/rabbitmq" },
           { text: "ElasticSearch", link: "/docs/back-end/elasticsearch" },
         ],
