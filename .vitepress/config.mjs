@@ -73,7 +73,7 @@ export default defineConfig({
       {
         text: "教程",
         items: [
-          { text: "Electron打包Vue3项目", link: "/docs/Tutorial/electron_package" },
+          { text: "Electron+Vue3项目打包", link: "/docs/Tutorial/electron_package" },
           { text: "VitePress搭建和部署", link: "/docs/Tutorial/vitepress" }
         ],
       },
