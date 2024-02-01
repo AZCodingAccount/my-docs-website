@@ -28,7 +28,10 @@ export default defineConfig({
       {
         text: "后端",
         items: [
-          {text:"SpringBoot集成各种技术",link:"/docs/back-end/integrate-tech"},
+          {
+            text: "SpringBoot集成各种技术",
+            link: "/docs/back-end/integrate-tech",
+          },
           { text: "RabbitMQ", link: "/docs/back-end/rabbitmq" },
           { text: "ElasticSearch", link: "/docs/back-end/elasticsearch" },
         ],
@@ -64,7 +67,14 @@ export default defineConfig({
         items: [
           { text: "B站刷播放量接口", link: "/docs/spiders/Bilibili" },
           { text: "某练通爬取", link: "/docs/spiders/dlt" },
-          { text: "中考移民问题", link: "/docs/spiders/middle_exam" }
+          { text: "中考移民问题", link: "/docs/spiders/middle_exam" },
+        ],
+      },
+      {
+        text: "教程",
+        items: [
+          { text: "Electron打包Vue3项目", link: "/docs/Tutorial/electron_package" },
+          { text: "VitePress搭建和部署", link: "/docs/Tutorial/vitepress" }
         ],
       },
       {
@@ -72,7 +82,7 @@ export default defineConfig({
         items: [
           { text: "Git", link: "/docs/tools/git" },
           { text: "Docker", link: "/docs/tools/docker" },
-          { text: "VitePress搭建和部署", link: "/docs/tools/vitepress" },
+          { text: "iTime软件使用说明书", link: "/docs/tools/iTime_docs" },
           { text: "常用图标", link: "/docs/tools/icons" },
         ],
       },
