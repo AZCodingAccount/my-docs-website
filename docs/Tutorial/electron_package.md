@@ -100,9 +100,19 @@ pnnpm build
       "preload/**/*",
       "package.json"
     ],  # 定义应该被打包的文件路径
-    "win": {
-      "target": "nsis",
-      "icon": "dist/icons/icon.png"# 图标路径
+    ""win": {
+      "target": [
+        {
+          "target": "nsis"
+        },
+        {
+          "target": "portable"
+        },
+        {
+          "target": "msi"
+        }
+      ],
+      "icon": "dist/icons/icon.png"
     },
     "mac": {
       "target": "dmg"
