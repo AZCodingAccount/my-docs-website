@@ -94,13 +94,15 @@ pnnpm build
         "from": "软件使用说明书.md",
         "to": "软件使用说明书.md"
       }],    # 原封不动拷贝
+    "afterPack": "scripts/afterPack.js",
+    "artifactBuildCompleted": "scripts/rename.js",
     "files": [
       "dist/**/*",
       "main.js",
       "preload/**/*",
       "package.json"
     ],  # 定义应该被打包的文件路径
-    ""win": {
+    "win": {
       "target": [
         {
           "target": "nsis"
@@ -222,3 +224,45 @@ module.exports = async (context) => {
 ```
 
 经过一系列操作，优化到了280MB。
+
+## 最后
+
+​		electron-builder有三个钩子：`artifactBuildCompleted`、`afterPack`、`afterSign`，分别是构建完成、打包完成、签名完成、可以自动化构建流程。我这里还用到了构建完成，自动化命名构建文件（当然，手动命名也是可以的）。
+
+```js
+const fs = require("fs");
+const path = require("path");
+
+module.exports = async function (params) {
+  // 读取版本号
+  const packageJson = require("../package.json");
+  const version = packageJson.version;
+  let artifact = params.file;
+  let originFile = artifact;
+
+  const ext = path.extname(artifact);
+  // 处理版本号前缀，注意空格
+  artifact = artifact.replace(` ${version}`, `-${version}`);
+  let newName;
+
+  if (ext === ".exe" && !artifact.includes("Setup")) {
+    // 不用安装的程序
+    newName = artifact.replace(/\.exe$/, "-windows-no-installer.exe");
+  } else if (ext === ".exe") {
+    // 常规安装包
+    newName = artifact.replace(
+      ` Setup-${version}.exe`,
+      `-${version}-windows-installer.exe`
+    );
+  } else {
+    newName = artifact;
+  }
+
+  // 重命名
+  if (newName) {
+    fs.renameSync(originFile, newName);
+  }
+};
+```
+
+​		其他还有一些进阶语法，比如增量更新，有这种需求官网和stackoverflow、issues区都可以，其他的见仁见智吧，国内用的人还是不太多，有的回答API都废弃了，注意版本。
