@@ -533,8 +533,7 @@ jobs:
 
 ## 补充
 
-如果你想要配置mermaid支持，这是一个可以使用md语法绘制流程图，饼状图的md扩展。[vitepress插件官网](https://emersonbottero.github.io/vitepress-plugin-mermaid/guide/getting-started.html)需要按照下面的步骤操作
-
+如果你想要配置mermaid支持(这是一个可以使用md语法绘制流程图，饼状图的md扩展),需要按照下面的步骤操作。
 安装
 
 ```bash
