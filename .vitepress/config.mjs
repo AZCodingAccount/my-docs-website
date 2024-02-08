@@ -1,5 +1,7 @@
 import { defineConfig } from "vitepress";
 import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";
+import { withMermaid } from "vitepress-plugin-mermaid";
+
 // import markdownItAnchor from "markdown-it-anchor";
 // import MarkdownIt from "markdown-it";
 // import { tocPlugin } from "@mdit-vue/plugin-toc";
@@ -7,7 +9,7 @@ import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";
 // 目前有两个问题没搞懂，一个是配置了srcDir以后，我的style.css样式不生效了。第二个是markdown扩展插件到底怎么用的啊
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid({
   // base:'/my-docs-website/',
   // srcDir: "./docs", // 配置md文档的映射目录，默认根路径
   head: [["link", { rel: "icon", href: "/logo.svg" }]],
@@ -73,8 +75,11 @@ export default defineConfig({
       {
         text: "教程",
         items: [
-          { text: "Electron+Vue3项目打包", link: "/docs/Tutorial/electron_package" },
-          { text: "VitePress搭建和部署", link: "/docs/Tutorial/vitepress" }
+          {
+            text: "Electron+Vue3项目打包",
+            link: "/docs/Tutorial/electron_package",
+          },
+          { text: "VitePress搭建和部署", link: "/docs/Tutorial/vitepress" },
         ],
       },
       {
@@ -156,5 +161,11 @@ export default defineConfig({
     //   // use more markdown-it plugins!
     //   md.use(tocPlugin);
     // },
+  },
+  mermaid: {
+    // refer https://mermaid.js.org/config/setup/modules/mermaidAPI.html#mermaidapi-configuration-defaults for options
+  },
+  mermaidPlugin: {
+    class: "mermaid my-class", // set additional css classes for parent container
   },
 });
