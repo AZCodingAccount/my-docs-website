@@ -471,3 +471,49 @@ jobs:
 在自己的域名服务商那里添加一条CNAME记录，直接指向自己的github分配的域名就好了，另外需要把这个base给注释掉（不然css文件和页面都找不到），等待分配完成。
 
 ![image-20240108232734898](https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240108232734898.png)
+
+
+
+## 补充
+
+如果你想要配置mermaid支持(这是一个可以使用md语法绘制流程图，饼状图的md扩展),需要按照下面的步骤操作。
+安装
+
+```bash
+npm i vitepress-plugin-mermaid mermaid -D
+```
+
+如果使用pnpm，还需要下面的配置改变pnpm的默认行为兼容插件
+
+```bash
+pnpm install --shamefully-hoist
+# 或者在根目录新建.npmrc文件，配置
+shamefully-hoist=true
+```
+
+更改`.vitepress/config.mjs`配置项
+
+1: 导入
+
+```js
+import { withMermaid } from "vitepress-plugin-mermaid";
+```
+
+
+
+2: defineConfig—>withMermaid
+
+<img src="https://my-picture-bed1-1321100201.cos.ap-beijing.myqcloud.com/mypictures/image-20240209000231506.png" alt="image-20240209000231506" style="zoom:33%;" />
+
+3:根配置项下添加
+
+```js
+ mermaid: {
+    // refer https://mermaid.js.org/config/setup/modules/mermaidAPI.html#mermaidapi-configuration-defaults for options
+  },
+ mermaidPlugin: {
+    class: "mermaid my-class", // set additional css classes for parent container
+  },
+```
+
+可以访问[插件官网](https://emersonbottero.github.io/vitepress-plugin-mermaid/guide/getting-started.html)和[mermaid官网](https://mermaid.js.org/config/setup/modules/mermaidAPI.html#mermaidapi-configuration-defaults for options)获取更多配置信息

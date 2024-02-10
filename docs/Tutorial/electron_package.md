@@ -12,7 +12,11 @@
 
 ```js
 pnpm i electron-is-dev  # 安装
-const isDev = require("electron-is-dev"); #使用
+async function checkIsDev() {
+  const module = await import("electron-is-dev");
+  isDev = module.default;
+  work();
+} # 使用
 ```
 
 2：改装项目，如果有使用加载路由的，改成加载文件url，vite会自动导航，**修改vue-router模式为hash**
@@ -23,17 +27,13 @@ const isDev = require("electron-is-dev"); #使用
  if (isDev) {
     pomodoroWindow.loadURL("http://localhost:5173/fullscreen/pomodoro");
   } else {
-    pomodoroWindow
-      .loadFile(path.join(__dirname, "dist", "index.html"))
-      .then(() => {
-        pomodoroWindow.loadURL(
-          `file://${path.join(
-            __dirname,
-            "dist",
-            "index.html"
-          )}#/fullscreen/pomodoro`
-        );
-      });
+    pomodoroWindow.loadURL(
+      `file://${path.join(
+        __dirname,
+        "dist",
+        "index.html"
+      )}#/fullscreen/pomodoro`
+    );
   } 
 ```
 
