@@ -54,7 +54,7 @@ pnpm i electron-builder -D
 5：打包vue项目：
 
 ```bash
-pnnpm build
+pnpm build
 ```
 
 6：修改package.json（开发和生产环境依赖已省略 ）
