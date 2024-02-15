@@ -89,6 +89,7 @@ export default withMermaid({
           { text: "Docker", link: "/docs/tools/docker" },
           { text: "iTime软件使用说明书", link: "/docs/tools/iTime_docs" },
           { text: "常用图标", link: "/docs/tools/icons" },
+          { text: "小知识", link: "/docs/tools/tips" },
         ],
       },
     ],
