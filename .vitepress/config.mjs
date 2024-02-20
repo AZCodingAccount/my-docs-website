@@ -36,6 +36,7 @@ export default withMermaid({
           },
           { text: "RabbitMQ", link: "/docs/back-end/rabbitmq" },
           { text: "ElasticSearch", link: "/docs/back-end/elasticsearch" },
+          { text: "Mybatis-Plus", link: "/docs/back-end/mybatis-plus" },
         ],
       },
       {
@@ -170,4 +171,3 @@ export default withMermaid({
     class: "mermaid my-class", // set additional css classes for parent container
   },
 });
-
