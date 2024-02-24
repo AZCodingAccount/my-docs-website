@@ -9,12 +9,13 @@
 - 规范的目录结构
 - 登录注册代码模版，权限校验自定义注解
 - 规范的接口返回结构、全局异常处理
-- Swagger接口文档和注解式生成文档
+- Swagger+Knife4j接口文档
 - SQL模版
 
 技术集成
 
 - Junit5集成
+- EasyExcel集成
 - MP集成
 - Hutool工具包集成
 - WebSocket集成
@@ -29,6 +30,11 @@
 
 - 后端跨域配置
 
-- Docker部署脚本
+- Docker部署 脚本
 
 下面贴一下Github地址，需要用直接克隆下来就可以
+
+
+
+
+
