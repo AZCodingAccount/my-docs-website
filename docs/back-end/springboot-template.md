@@ -8,6 +8,7 @@
 
 - 规范的目录结构
 - 登录注册代码模版，权限校验自定义注解
+- Redis序列化拦截器配置、操作Redis的CRUD代码
 - 规范的接口返回结构、全局异常处理
 - Swagger+Knife4j接口文档
 - SQL模版
@@ -16,9 +17,10 @@
 
 - Junit5集成
 - EasyExcel集成
-- MP集成
+- MP集成、分页拦截器
 - Hutool工具包集成
 - WebSocket集成
+- SpringTask定时任务
 - Redis分布式登录
 - ES搜索
 - RabbitMQ消息队列
