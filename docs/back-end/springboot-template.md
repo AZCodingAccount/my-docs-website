@@ -22,6 +22,7 @@
 - WebSocket集成
 - SpringTask定时任务
 - Redis分布式登录
+- Redission限流
 - ES搜索
 - RabbitMQ消息队列
 - DubboRPC框架
