@@ -48,3 +48,32 @@
 
 5. 尽量保证简单。路径参数{id}在Restful API中非常常用，因为其比路径参数更加清晰。在其他时候如获取个人信息也不用传递个人id，因为这个id一般都是在session|token|jwt中存储
 
+### 单例模式的双检锁实现
+
+为了性能要求，我们常常需要单例模式进行对象的创建。但是在多线情况下，还是会创建多个对象，带来一定程度下的性能损耗，单例模式中**相对高大上**的一个方法双检锁可以解决这个问题
+
+```java
+public class MetaManager {
+    private static volatile Meta meta;	// 保证线程内存共享，不重复初始化 
+
+    public static Meta getMetaobject() {
+        if (meta == null) {
+            synchronized (MetaManager.class) {
+                if (meta == null) {
+                    meta = initMeta(); // 一个初始化方法
+                }
+            }
+        }
+        return meta;
+    }
+
+    private static Meta initMeta() {
+        // 初始化 Meta 对象的逻辑
+        return new Meta();
+    }
+}
+```
+
+会有一个疑问，为什么锁不加在外面，还需要外层进行判断呢？
+
+这个是因为性能开销的缘故，在每次调用`getMetaObject`时，如果加在最外层，在已经初始化完成以后，还是变成同步方法，降低性能。在外层判断`meta`对象以后，如果已经被初始化，可以**直接退出而不需要等待锁**
